@@ -51,17 +51,13 @@ class HomeController {
         ],
       });
       const transformedData = data.map((d) => {
-        const match = d.body.match(/<body>(.*?)<\/body>/s);
-        // const $ = cheerio.load(match[1]);
-
-        // Mengambil tag pertama beserta isinya
-        // const tagPertama = $.root().children().first().toString();
+        const $ = cheerio.load(d.body);
         return {
           question_id: d.id,
           uploader: d.User.name,
           profile_picture: d.User.Profile.profile_picture,
           title: d.title,
-          body: match[1],
+          body: $.text(),
           tags: d.tag.map((t) => {
             return {
               tag_name: t.tag_name,
