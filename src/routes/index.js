@@ -5,6 +5,7 @@ const app = express();
 const cors = require("cors");
 const auth = require("./authentication");
 const questions = require("./questions");
+const home = require("./home");
 const GlobalMiddleware = require("../middleware/GlobalMiddleware");
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -19,5 +20,7 @@ app.use(GlobalMiddleware.check);
 
 // Questions route
 app.use("/api/questions", questions);
+// Home route
+app.use("/api/home", home);
 
 module.exports = app;
