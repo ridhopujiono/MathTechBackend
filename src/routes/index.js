@@ -14,13 +14,13 @@ app.use(cors());
 
 // Auth route
 app.use("/api/auth", auth);
+// Home route
+app.use("/api/home", home);
 
 // Middleware global, why "/auth" not use this middleware because it not requires middleware
 app.use(GlobalMiddleware.check);
 
 // Questions route
 app.use("/api/questions", questions);
-// Home route
-app.use("/api/home", home);
 
 module.exports = app;
